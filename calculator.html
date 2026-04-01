@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <pre style="color: #667eea; font-size: 14px; margin: 0;">
+   _____________________
+  |  _________________  |
+  | | 7 8 9 / C     | |
+  | | 4 5 6 * DEL   | |
+  | | 1 2 3 -       | |
+  | | 0 . = +       | |
+  | |_________________| |
+  |₍ Calculate Magic ₎ |
+  |_____________________|
+        </pre>
+        <h1>Simple Number Calculator</h1>
+        <button onclick="calculate()">Click to Enter Numbers</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            // Get the two numbers from the user
+            const number1 = prompt("Enter the first number:");
+            const number2 = prompt("Enter the second number:");
+
+            // Check if inputs are valid
+            if (number1 === null || number2 === null) {
+                document.getElementById("result").innerHTML = "Operation cancelled.";
+                return;
+            }
+
+            // Convert to numbers
+            const num1 = parseFloat(number1);
+            const num2 = parseFloat(number2);
+
+            // Check if conversion was successful
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById("result").innerHTML = "Please enter valid numbers!";
+                return;
+            }
+
+            // Calculate the sum
+            const sum = num1 + num2;
+
+            // Display the result
+            document.getElementById("result").innerHTML = 
+                `<strong>Number 1:</strong> ${num1}<br>
+                 <strong>Number 2:</strong> ${num2}<br>
+                 <strong>Sum:</strong> ${sum}`;
+        }
+    </script>
+</body>
+</html>
